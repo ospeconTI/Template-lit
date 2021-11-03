@@ -25,8 +25,8 @@ module.exports = {
             favicon: "./assets/icons/favicon.ico",
         }),
         new WebpackPwaManifest({
-            name: "diabetes",
-            short_name: "diabetes",
+            name: "template",
+            short_name: "template",
             description: "",
             start_url: "./index.html",
             background_color: "#ffffff",

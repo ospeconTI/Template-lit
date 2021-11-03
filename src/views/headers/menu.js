@@ -6,6 +6,7 @@ import { connect } from "@brunomon/helpers";
 import { goTo } from "../../redux/routing/actions";
 import { isInLayout } from "../../redux/screens/screenLayouts";
 import { gridLayout } from "../css/gridLayout";
+import { logo } from "../css/logo";
 import { select } from "../css/select";
 import { MENU, RIGHT } from "../../../assets/icons/svgs";
 import { gestures } from "../../libs/gestures";
@@ -29,21 +30,24 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         return css`
             ${gridLayout}
             ${select}
+            ${logo}
             :host {
                 display: grid;
                 grid-auto-flow: column;
                 padding: 0 !important;
+                background-color: var(--primary-color);
             }
             :host([hidden]) {
                 display: none;
             }
+
             #titulo {
-                color: var(--color-blanco);
+                color: var(--light-text-color);
                 cursor: pointer;
             }
 
             .menuItem {
-                color: var(--color-blanco);
+                color: var(--light-text-color);
                 cursor: pointer;
             }
 
@@ -54,7 +58,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 margin: 0;
             }
             #version {
-                color: var(--color-gris);
+                color: var(--light-application-color);
                 font-size: 0.6rem;
                 align-self: start;
             }
@@ -70,7 +74,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 height: 100vh;
                 width: 60%;
                 grid-auto-flow: row;
-                background-color: var(--primary-color);
+                background-color: var(--secondary-color);
                 align-content: start;
                 transition: 0.5s all;
                 display: grid;
@@ -96,8 +100,8 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
 
             .menu-button {
                 cursor: pointer;
-                stroke: var(--color-blanco);
-                fill: var(--color-blanco);
+                stroke: var(--light-text-color);
+                fill: var(--light-text-color);
                 justify-self: end;
                 justify-content: end;
                 display: grid;
@@ -112,12 +116,12 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 transition: none;
             }
             .activo {
-                color: var(--color-celeste-claro);
+                color: var(--light-text-color);
                 font-size: var(--font-label-size);
             }
 
-            .seleccionado {
-                color: var(--primary-color);
+            :host([media-size="large"]) .seleccionado {
+                color: var(--secondary-color);
             }
         `;
     }
@@ -125,18 +129,21 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         return html`
             <div id="velo" @click=${this.toggleMenu}></div>
             <div class="grid column">
-                <div class="grid row no-padding">
+                <!--  <div class="grid row no-padding">
                     <div id="version" class="grid no-padding">V${__VERSION__}</div>
                     <div class="grid activo no-padding">${this.usuario ? this.usuario.Profiles[0].Perfil.Apellido : ""}</div>
                 </div>
-
-                <h1 id="titulo" @click="${this.click}" .option=${"main"}>${__DESCRIPTION__}</h1>
+ -->
+                <div class="inner-grid column start">
+                    <div class="logo"></div>
+                    <h1 id="titulo" @click="${this.click}" .option=${"main"}>${__DESCRIPTION__}</h1>
+                </div>
                 <div class="menu-button" @click=${this.toggleMenu}>${MENU}</div>
             </div>
 
             <div id="opciones" class="grid column" @click=${this.toggleMenu}>
                 <div class="menu-button">${RIGHT}</div>
-                <div class="menuItem seleccionado" @click=${this.click} .option=${"opcion 0"}>opcion 0</div>
+                <div class="menuItem seleccionado" @click=${this.click} .option=${"opcion 0"}>Opcion 0</div>
                 <div class="menuItem" @click=${this.click} .option=${"opcion1"}>Opcion 1</div>
                 <div class="menuItem" @click=${this.click} .option=${"opcion2"}>Opcion 2</div>
                 <div class="menuItem" @click=${this.click} .option=${"opcion3"}>Opcion 3</div>
@@ -200,7 +207,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             this.hidden = true;
             const isCurrentScreen = state.screen.name != null;
             if (isInLayout(state, this.area) && isCurrentScreen) {
-                //activo evento de gestos
                 this.hidden = false;
                 this.update();
             }

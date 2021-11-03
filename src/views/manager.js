@@ -38,7 +38,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
                 height: 100vh;
                 width: 100vw;
                 padding: 0;
-                background-color: var(--color-gris-claro);
+                background-color: var(--light-application-color);
                 overflow: hidden;
             }
 
@@ -52,7 +52,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
                 display: none;
             }
             :host::-webkit-scrollbar-thumb {
-                background: var(--primary-color);
+                background: var(--secondary-color);
                 border-radius: 5px;
             }
         `;
