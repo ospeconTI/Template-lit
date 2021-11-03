@@ -6,6 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const path = require("path");
+const package = require("./package.json");
 
 module.exports = {
     optimization: {
@@ -48,9 +49,9 @@ module.exports = {
         }),
 
         new webpack.DefinePlugin({
-            __VERSION__: JSON.stringify(process.env.npm_package_version),
-            __DESCRIPTION__: JSON.stringify(process.env.npm_package_description),
-            __ORGANIZACION__: JSON.stringify("la organización"),
+            __VERSION__: JSON.stringify(package.version),
+            __DESCRIPTION__: JSON.stringify(package.description),
+            __ORGANIZACION__: JSON.stringify("oespecon"),
         }),
     ],
     module: {
