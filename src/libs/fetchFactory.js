@@ -60,6 +60,22 @@ export const fetchFactory = (url, entity) => {
                 });
         },
 
+        put: (id, body, token) => {
+            let newUrl = url + "/" + id;
+            return fetch(newUrl, {
+                method: "PUT",
+                body: JSON.stringify(body),
+                headers: _getHeaders(token),
+            })
+                .then((response) => {
+                    return response.text();
+                })
+                .then((text) => {
+                    const bodyAsJson = JSON.parse(text || "{}");
+                    return bodyAsJson;
+                });
+        },
+
         delete: (id, token) => {
             let newUrl = url + "/" + id;
             return fetch(newUrl, {
