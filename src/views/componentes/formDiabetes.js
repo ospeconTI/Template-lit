@@ -2,7 +2,7 @@
 
 import { html, LitElement, css } from "lit";
 import { store } from "../../redux/store";
-import { connect } from "@brunomon/helpers";
+import { connect, deepValue } from "@brunomon/helpers";
 
 const DIABETES = "diabetes.formularioTimeStamp";
 const ALTA = "diabetes.guardadoTimeStamp";
@@ -17,7 +17,7 @@ export class formDiabetes extends connect(store, DIABETES, ALTA, MODIFICADO, ELI
         this.benef = {};
         this.formDia = {};
         this.nombre = "bruno";
-        this.item = { apellido: "Monfrinotti", edad: "50", sexo: "H" };
+        this.item = { apellido: "Monfrinotti", edad: "50", sexo: "H", nombre: "yo" };
     }
 
     static get styles() {
@@ -82,11 +82,26 @@ export class formDiabetes extends connect(store, DIABETES, ALTA, MODIFICADO, ELI
             </select>
 
             <div>${this.item.apellido}</div>
+            <div>${this.item.nombre}</div>
             <div>${this.item.edad}</div>
             <div>${this.item.sexo}</div>
+            <input type="text" .value="${this.item.nombre}" @input="${this.enlace("nombre")}"></input>
+            <button @click="${this.refrescar}">Refresh</button>
         `;
 
         return form;
+    }
+
+    enlace(field) {
+        return (e) => this.updateProperty(e, field);
+    }
+    updateProperty(e, field) {
+        this.item[field] = e.currentTarget.value;
+        this.requestUpdate();
+    }
+
+    refrescar() {
+        this.requestUpdate("_nombre");
     }
     minMax(e) {
         let value = Number(e.currentTarget.value);
@@ -169,7 +184,6 @@ export class formDiabetes extends connect(store, DIABETES, ALTA, MODIFICADO, ELI
             },
             item: {
                 type: Object,
-                state: true,
             },
             nombre: {
                 type: String,

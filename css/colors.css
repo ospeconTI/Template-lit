@@ -2,11 +2,16 @@
 
 html {
     --primary-color: #313e56;
+    --primary-color-oscuro: #171c27;
+    --primary-color-claro: #83a8f7;
     --secondary-color: rgb(72, 187, 120);
+    --exit-color: rgb(204, 20, 20);
     --error-color: #eda5a5;
     --ok-color: #c5efb0;
     --dark-text-color: #000000;
     --light-text-color: #fff;
     --dark-application-color: #333333;
     --light-application-color: #f3f3f3;
+    --light-separator: rgb(211, 211, 211);
+    --dark-separator: rgb(48, 48, 48);
 }

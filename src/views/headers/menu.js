@@ -11,6 +11,7 @@ import { select } from "../css/select";
 import { MENU, RIGHT } from "../../../assets/icons/svgs";
 import { gestures } from "../../libs/gestures";
 import { logout } from "../../redux/autorizacion/actions";
+import { gesturesController } from "../controllers/gesturesController";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SCREEN = "screen.timeStamp";
@@ -23,7 +24,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         this.visible = false;
         this.arrastrando = false;
         this.usuario = null;
-        this.addEventListener("gestures", this.gestos);
+        const gestures = new gesturesController(this, this.gestos);
     }
 
     static get styles() {
@@ -67,20 +68,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 grid-gap: 2rem;
                 padding: 2rem;
             }
-            :host(:not([media-size="large"])) #opciones {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 60%;
-                grid-auto-flow: row;
-                background-color: var(--secondary-color);
-                align-content: start;
-                transition: 0.5s all;
-                display: grid;
-                justify-items: start;
-                z-index: 100;
-            }
 
             :host([media-size="large"]) .menu-button,
             :host([media-size="large"]) #velo {
@@ -122,6 +109,21 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
 
             :host([media-size="large"]) .seleccionado {
                 color: var(--secondary-color);
+            }
+
+            :host(:not([media-size="large"])) #opciones {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 60%;
+                grid-auto-flow: row;
+                background-color: var(--secondary-color);
+                align-content: start;
+                transition: 0.3s all;
+                display: grid;
+                justify-items: start;
+                z-index: 100;
             }
         `;
     }
@@ -165,7 +167,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                     this.toggleMenu();
                 } else {
                     this.opciones.style.right = "0";
-                    this.update();
                 }
             }
         }
@@ -173,7 +174,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
     toggleMenu() {
         this.visible = !this.visible;
         this.opciones.style.right = this.visible ? "0" : "-100%";
-        this.update();
     }
 
     click(e) {
@@ -198,7 +198,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
 
     firstUpdated(changedProperties) {
         this.opciones = this.shadowRoot.querySelector("#opciones");
-        gestures(this.opciones, this.gestos, this);
     }
 
     stateChanged(state, name) {
@@ -208,14 +207,12 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             const isCurrentScreen = state.screen.name != null;
             if (isInLayout(state, this.area) && isCurrentScreen) {
                 this.hidden = false;
-                this.update();
             }
         }
         if (name == USUARIO) {
             if (state.autorizacion.usuario.Profiles && state.autorizacion.usuario.Profiles.length != 0) {
                 this.usuario = state.autorizacion.usuario;
             }
-            this.update();
         }
     }
 

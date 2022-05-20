@@ -13,9 +13,9 @@ export const input = css`
         width: 100%;
         padding: 0.5rem;
         height: 2.5rem;
-        background-color: var(--color-blanco);
-        border: 1px solid var(--color-gris-claro);
-        color: var(--color-azul-oscuro);
+        background-color: var(--light-application-color);
+        border: 1px solid var(--light-separator);
+        color: var(--primary-color-oscuro);
         font-size: var(--font-bajada-size);
         font-weight: var(--font-bajada-weight);
         outline: none;
@@ -23,15 +23,15 @@ export const input = css`
         font-family: inherit;
     }
     .input.error input {
-        border: 1px solid var(--color-rojo);
+        border: 1px solid var(--color-error);
     }
     .input label {
-        color: var(--color-azul-oscuro);
+        color: var(--primary-color-oscuro);
         font-size: var(--font-label-size);
         font-weight: var(--font-label-weight);
     }
     .input label[error] {
-        color: var(--color-rojo);
+        color: var(--color-error);
         font-size: var(--font-error-size);
         font-weight: var(--font-error-weight);
     }
@@ -40,6 +40,6 @@ export const input = css`
     }
     ::placeholder {
         /* Firefox, Chrome, Opera */
-        color: var(--color-gris);
+        color: var(--light-separator);
     }
 `;

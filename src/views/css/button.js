@@ -17,23 +17,23 @@ export const button = css`
         font-weight: var(--font-bajada-weight);
         border-radius: 0.4rem;
         padding: 0.5rem;
-        box-shadow: 0 3px 6px 0 var(--orange-5);
+        box-shadow: 0 3px 6px 0 var(--secondary-color);
         transition-duration: 0.4s;
         text-decoration: none;
         border: none;
         outline: none;
     }
     button:not([disabled])[btn1]:hover {
-        background-color: var(--color-azul-oscuro);
+        background-color: var(--primary-color-oscuro);
     }
     button[btn1]:active {
         background-color: var(--primary-color);
-        box-shadow: 0.2rem var(--color-azul-oscuro);
+        box-shadow: 0.2rem var(--primary-color-oscuro);
         transform: translateY(0.2rem);
     }
     button[btn1][disabled] {
         opacity: 0.8;
-        background-color: var(--color-gris);
+        background-color: var(--light-separator);
         cursor: not-allowed;
         pointer-events: none;
     }
@@ -52,7 +52,7 @@ export const button = css`
         font-weight: var(--font-bajada-weight);
         border-radius: 0.4rem;
         padding: 0.5rem;
-        box-shadow: 0 3px 6px 0 var(--orange-5);
+        box-shadow: 0 3px 6px 0 var(--secondary-color);
         transition-duration: 0.4s;
         text-decoration-line: underline;
         text-decoration-style: solid;
@@ -60,7 +60,7 @@ export const button = css`
         outline: none;
     }
     button:not([disabled])[btn2]:hover {
-        color: var(--color-azul-oscuro);
+        color: var(--primary-color-oscuro);
     }
     button[btn2]:active {
         color: var(--primary-color);
@@ -68,7 +68,7 @@ export const button = css`
     }
     button[btn2][disabled] {
         opacity: 0.8;
-        color: var(--color-gris);
+        color: var(--light-separator);
         cursor: not-allowed;
         pointer-events: none;
     }
@@ -86,22 +86,22 @@ export const button = css`
         border-radius: 0.4rem;
         border: 1px solid var(--primary-color);
         padding: 0.5rem;
-        box-shadow: 0 3px 6px 0 var(--orange-5);
+        box-shadow: 0 3px 6px 0 var(--secondary-color);
         transition-duration: 0.4s;
         text-decoration: none;
         outline: none;
     }
     button:not([disabled])[btn3]:hover {
-        background-color: var(--color-azul-oscuro);
+        background-color: var(--primary-color-oscuro);
     }
     button[btn3]:active {
-        background-color: var(--color-negro);
-        box-shadow: 0.2rem var(--color-azul-oscuro);
+        background-color: var(--primary-color);
+        box-shadow: 0.2rem var(--primary-color-oscuro);
         transform: translateY(0.2rem);
     }
     button[btn3][disabled] {
         opacity: 0.8;
-        background-color: var(--color-gris);
+        background-color: var(--light-separator);
         cursor: not-allowed;
         pointer-events: none;
     }
@@ -119,7 +119,7 @@ export const button = css`
         font-weight: var(--font-bajada-weight);
         border-radius: 50%;
         padding: 0.1rem;
-        box-shadow: 0 3px 6px 0 var(--orange-5);
+        box-shadow: 0 3px 6px 0 var(--secondary-color);
         transition-duration: 0.4s;
         text-decoration-line: underline;
         text-decoration-style: solid;
