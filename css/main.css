@@ -21,4 +21,6 @@ body {
     border: 0;
     position: fixed;
     font-family: "Nunito";
+    display: grid;
+    place-content: stretch;
 }

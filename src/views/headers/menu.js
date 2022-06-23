@@ -8,8 +8,8 @@ import { isInLayout } from "../../redux/screens/screenLayouts";
 import { gridLayout } from "../css/gridLayout";
 import { logo } from "../css/logo";
 import { select } from "../css/select";
-import { MENU, RIGHT } from "../../../assets/icons/svgs";
-import { gestures } from "../../libs/gestures";
+import { button } from "../css/button";
+import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
 import { logout } from "../../redux/autorizacion/actions";
 import { gesturesController } from "../controllers/gesturesController";
 
@@ -24,6 +24,11 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         this.visible = false;
         this.arrastrando = false;
         this.usuario = null;
+        this.optionsCount = 4;
+        this.defaultOption = 0;
+        this.selectedOption = new Array(this.optionsCount).fill(false);
+        this.selectedOption[this.defaultOption] = true;
+
         const gestures = new gesturesController(this, this.gestos);
     }
 
@@ -32,23 +37,24 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             ${gridLayout}
             ${select}
             ${logo}
+            ${button}
             :host {
                 display: grid;
                 grid-auto-flow: column;
                 padding: 0 !important;
-                background-color: var(--primary-color);
+                background-color: var(--primario);
             }
             :host([hidden]) {
                 display: none;
             }
 
             #titulo {
-                color: var(--light-text-color);
+                color: var(--on-primario);
                 cursor: pointer;
             }
 
             .menuItem {
-                color: var(--light-text-color);
+                color: var(--on-secundario);
                 cursor: pointer;
             }
 
@@ -59,7 +65,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 margin: 0;
             }
             #version {
-                color: var(--light-application-color);
+                color: var(--on-primario);
                 font-size: 0.6rem;
                 align-self: start;
             }
@@ -80,15 +86,12 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 right: -100%;
                 width: 100vw;
                 height: 100vh;
-                background-color: rgba(0, 0, 0, 0.3);
-
+                background-color: var(--velo);
                 z-index: 90;
             }
 
             .menu-button {
                 cursor: pointer;
-                stroke: var(--light-text-color);
-                fill: var(--light-text-color);
                 justify-self: end;
                 justify-content: end;
                 display: grid;
@@ -107,8 +110,10 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 font-size: var(--font-label-size);
             }
 
-            :host([media-size="large"]) .seleccionado {
-                color: var(--secondary-color);
+            :host([media-size="large"]) button[selected] {
+                color: var(--terciario);
+                stroke: var(--terciario);
+                fill: var(--terciario);
             }
 
             :host(:not([media-size="large"])) #opciones {
@@ -118,12 +123,35 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
                 height: 100vh;
                 width: 60%;
                 grid-auto-flow: row;
-                background-color: var(--secondary-color);
+                background-color: var(--secundario);
                 align-content: start;
                 transition: 0.3s all;
                 display: grid;
                 justify-items: start;
                 z-index: 100;
+            }
+            svg {
+                height: 1.2rem;
+                width: 1.2rem;
+            }
+            button[etiqueta] {
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: auto 1fr;
+                grid-gap: 0.3rem;
+                align-items: center;
+                align-content: center;
+            }
+            button[link] {
+                color: var(--on-primario);
+                stroke: var(--on-primario);
+                fill: var(--on-primario);
+            }
+            button[raised] {
+                box-shadow: none;
+            }
+            #version{
+                color(--on-primario)
             }
         `;
     }
@@ -131,24 +159,23 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         return html`
             <div id="velo" @click=${this.toggleMenu}></div>
             <div class="grid column">
-                <!--  <div class="grid row no-padding">
-                    <div id="version" class="grid no-padding">V${__VERSION__}</div>
-                    <div class="grid activo no-padding">${this.usuario ? this.usuario.Profiles[0].Perfil.Apellido : ""}</div>
-                </div>
- -->
                 <div class="inner-grid column start">
                     <div class="logo"></div>
                     <h1 id="titulo" @click="${this.click}" .option=${"main"}>${__DESCRIPTION__}</h1>
+                    <div id="version">${__VERSION__}</div>
                 </div>
-                <div class="menu-button" @click=${this.toggleMenu}>${MENU}</div>
+                <button raised circle class="menu-button" @click=${this.toggleMenu}>${MENU}</button>
             </div>
 
             <div id="opciones" class="grid column" @click=${this.toggleMenu}>
-                <div class="menu-button">${RIGHT}</div>
-                <div class="menuItem seleccionado" @click=${this.click} .option=${"opcion 0"}>Opcion 0</div>
-                <div class="menuItem" @click=${this.click} .option=${"opcion1"}>Opcion 1</div>
-                <div class="menuItem" @click=${this.click} .option=${"opcion2"}>Opcion 2</div>
-                <div class="menuItem" @click=${this.click} .option=${"opcion3"}>Opcion 3</div>
+                <button raised circle action class="menu-button">${RIGHT}</button>
+                <button link ?selected="${this.selectedOption[0]}" @click=${this.click} .option=${"opcion0"}>Opcion 0</button>
+                <button link ?selected="${this.selectedOption[1]}" @click=${this.click} .option=${"opcion1"}>Opcion 1</button>
+                <button link ?selected="${this.selectedOption[2]}" @click=${this.click} .option=${"opcion2"}>Opcion 2</button>
+                <button link etiqueta ?selected="${this.selectedOption[3]}" @click=${this.click} .option=${"opcion3"}>
+                    <div>${PERSON}</div>
+                    <div class="justify-self-start">Login</div>
+                </button>
             </div>
         `;
     }
@@ -185,15 +212,10 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             return;
         }
 
-        const botones = this.shadowRoot.querySelectorAll(".menuItem");
-        botones.forEach((button) => {
-            button.classList.remove("seleccionado");
-        });
-        e.currentTarget.classList.add("seleccionado");
+        this.selectedOption = new Array(this.optionsCount).fill(false);
+        this.selectedOption[Array.from(e.currentTarget.parentNode.children).indexOf(e.currentTarget) - 1] = true;
 
         store.dispatch(goTo(e.currentTarget.option));
-
-        this.update();
     }
 
     firstUpdated(changedProperties) {
@@ -241,6 +263,9 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             arrastrando: {
                 type: Boolean,
                 reflect: true,
+            },
+            selectedOption: {
+                type: Array,
             },
         };
     }

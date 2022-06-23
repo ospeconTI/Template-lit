@@ -10,7 +10,7 @@ import { SpinnerLoading } from "./componentes/spinner";
 
 import { goTo } from "../redux/routing/actions";
 
-import { formDiabetes } from "./componentes/formDiabetes";
+import { formTest } from "./componentes/formTest";
 import { menuPrincipal } from "./headers/menu";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
@@ -32,13 +32,9 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
     static get styles() {
         return css`
             :host {
-                position: absolute;
-                top: 0;
                 display: grid;
-                height: 100vh;
-                width: 100vw;
                 padding: 0;
-                background-color: var(--light-application-color);
+                background-color: var(--aplicacion);
                 overflow: hidden;
             }
 
@@ -52,7 +48,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
                 display: none;
             }
             :host::-webkit-scrollbar-thumb {
-                background: var(--secondary-color);
+                background: var(--secundario);
                 border-radius: 5px;
             }
         `;
@@ -60,8 +56,8 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
 
     render() {
         return html`
-            <menu-principal></menu-principal>
-            <form-diabetes></form-diabetes>
+            <menu-principal area="header"></menu-principal>
+            <form-test area="body"></form-test>
         `;
     }
 
