@@ -28,31 +28,31 @@
                 align-items: center;
                 grid-gap: 0.3rem;
                 cursor: pointer;
-                color: var(--color-crudo);
-                fill: var(--primary-color);
-                stroke: var(--primary-color);
-                background-color: var(--primary-color);
+                color: var(--on-primario);
+                fill: var(--on-primario);
+                stroke: var(--on-primario);
+                background-color: var(--primario);
                 font-size: var(--font-bajada-size);
                 font-weight: var(--font-bajada-weight);
-                border-radius: 0.4rem;
+                border-radius: var(--control-radius);
                 padding: 0.5rem;
-                box-shadow: 0 3px 6px 0 var(--orange-5);
+
                 transition-duration: 0.4s;
                 text-decoration: none;
                 border: none;
                 outline: none;
             }
             button[btn1]:hover {
-                background-color: var(--color-azul-oscuro);
+                background-color: var(--primario10);
             }
             button[btn1]:active {
-                background-color: var(--primary-color);
-                box-shadow: 0.2rem var(--color-azul-oscuro);
+                background-color: var(--primario10);
+                box-shadow: 0.2rem var(--primario10);
                 transform: translateY(0.2rem);
             }
             button[btn1][apagado] {
                 opacity: 0.8;
-                background-color: var(--color-gris);
+                background-color: var(--on-formulario-disabled);
                 cursor: not-allowed;
                 pointer-events: none;
             }
@@ -63,15 +63,15 @@
                 align-items: center;
                 grid-gap: 0.3rem;
                 cursor: pointer;
-                color: var(--primary-color);
-                fill: var(--primary-color);
-                stroke: var(--primary-color);
+                color: var(--on-aplicacion);
+                fill: var(--on-aplicacion);
+                stroke: var(--on-aplicacion);
                 background-color: transparent;
                 font-size: var(--font-bajada-size);
                 font-weight: var(--font-bajada-weight);
-                border-radius: 0.4rem;
+                border-radius: var(--control-radius);
                 padding: 0.5rem;
-                box-shadow: 0 3px 6px 0 var(--orange-5);
+
                 transition-duration: 0.4s;
                 text-decoration-line: underline;
                 text-decoration-style: solid;
@@ -79,15 +79,15 @@
                 outline: none;
             }
             button[btn2]:hover {
-                color: var(--color-azul-oscuro);
+                color: var(--primario10);
             }
             button[btn2]:active {
-                color: var(--primary-color);
+                color: var(--primario10);
                 transform: translateY(0.2rem);
             }
             button[btn2][apagado] {
                 opacity: 0.8;
-                color: var(--color-gris);
+                color: var(--on-formulario-disabled);
                 cursor: not-allowed;
                 pointer-events: none;
             }
@@ -98,29 +98,29 @@
                 align-items: center;
                 grid-gap: 0.3rem;
                 cursor: pointer;
-                color: var(--primary-color);
+                color: var(--on-primario);
                 background-color: transparent;
                 font-size: var(--font-bajada-size);
                 font-weight: var(--font-bajada-weight);
-                border-radius: 0.4rem;
-                border: 1px solid var(--primary-color);
+                border-radius: var(--control-radius);
+                border: 1px solid var(--on-primario);
                 padding: 0.5rem;
-                box-shadow: 0 3px 6px 0 var(--orange-5);
+
                 transition-duration: 0.4s;
                 text-decoration: none;
                 outline: none;
             }
             button[btn3]:hover {
-                background-color: var(--color-azul-oscuro);
+                background-color: var(--primario10);
             }
             button[btn3]:active {
-                background-color: var(--color-negro);
-                box-shadow: 0.2rem var(--color-azul-oscuro);
+                background-color: var(--on-formalrio);
+                box-shadow: 0.2rem var(--primario10);
                 transform: translateY(0.2rem);
             }
             button[btn3][apagado] {
                 opacity: 0.8;
-                background-color: var(--color-gris);
+                background-color: var(--on-formulario-disabled);
                 cursor: not-allowed;
                 pointer-events: none;
             }
@@ -134,23 +134,23 @@
             .ikeInput input {
                 padding: 0.4rem;
                 background-color: var(--color-blanco);
-                border: 1px solid var(--color-gris-claro);
-                color: var(--color-azul-oscuro);
+                border: 1px solid var(--formulario);
+                color: var(--primario10);
                 font-size: var(--font-bajada-size);
                 font-weight: var(--font-bajada-weight);
                 outline: none;
-                border-radius: 5px;
+                border-radius: var(--control-radius);
             }
             .ikeInput.error input {
-                border: 1px solid var(--color-rojo);
+                border: 1px solid var(--error);
             }
             .ikeInput label {
-                color: var(--color-azul-oscuro);
+                color: var(--primario10);
                 font-size: var(--font-label-size);
                 font-weight: var(--font-label-weight);
             }
             .ikeInput label[error] {
-                color: var(--color-rojo);
+                color: var(error);
                 font-size: var(--font-error-size);
                 font-weight: var(--font-error-weight);
             }
@@ -158,12 +158,12 @@
                 display: none;
             }
             ::placeholder {
-                color: var(--color-gris);
+                color: var(--on-formulario-disabled);
             }
         </style>
         <style id="main">
             body {
-                background-color: var(--color-gris-claro);
+                background-color: var(--aplicacion);
                 display: grid;
                 height: 100vh;
                 place-content: center;
@@ -176,7 +176,7 @@
                 display: grid;
                 place-content: center;
                 justify-items: center;
-                background-color: var(--color-blanco);
+                background-color: var(--aplicacion);
             }
             .tarjeta {
                 min-width: 40vw;
@@ -184,6 +184,7 @@
                 display: grid;
                 grid-auto-flow: rows;
                 grid-gap: 1rem;
+                background-color: var(--formulario);
             }
             svg {
                 height: 1rem;
@@ -192,8 +193,8 @@
             .botonAtras {
                 justify-self: start;
                 align-self: start;
-                background-color: var(--primary-color);
-                color: var(--color-blanco);
+                background-color: var(--on-primario);
+                color: var(--on-primario);
                 padding: 0.8rem;
                 cursor: pointer;
             }
@@ -217,9 +218,7 @@
                 <button btn1 type="submit">Comenzar</button>
             </form>
 
-            <button btn2 onclick="cambioClave()">Recuperar contraseña</button>
-            <button btn2 onclick="miembro()">Solicitud de altas</button>
-            <button btn2 onclick="miembro()">Solicitud de alta</button>
+            <button btn2 onclick="cambioClave()">OLVIDE MI CONTRASEÑA</button>
         </div>
         <script>
             let logueando = false;

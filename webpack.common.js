@@ -51,7 +51,7 @@ module.exports = {
         new webpack.DefinePlugin({
             __VERSION__: JSON.stringify(package.version),
             __DESCRIPTION__: JSON.stringify(package.description),
-            __ORGANIZACION__: JSON.stringify("oespecon"),
+            __ORGANIZACION__: JSON.stringify("OsPeCon"),
         }),
     ],
     module: {

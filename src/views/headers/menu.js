@@ -150,8 +150,8 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             button[raised] {
                 box-shadow: none;
             }
-            #version{
-                color(--on-primario)
+            #version {
+                color: var(--on-primario-bajada);
             }
         `;
     }
