@@ -9,6 +9,7 @@ import { input } from "../css/input";
 import { select } from "../css/select";
 import { check } from "../css/check";
 import { button } from "../css/button";
+import { spinner } from "../css/spinner";
 
 export class formTest extends connect(store)(LitElement) {
     constructor() {
@@ -22,6 +23,7 @@ export class formTest extends connect(store)(LitElement) {
             ${select}
             ${check}
             ${button}
+            ${spinner}
             :host {
                 display: grid;
                 grid-auto-flow: row;
@@ -45,6 +47,10 @@ export class formTest extends connect(store)(LitElement) {
                 grid-gap: 0.3rem;
                 align-items: center;
                 align-content: center;
+            }
+
+            .spinner-container {
+                position: relative;
             }
         `;
     }
@@ -172,6 +178,40 @@ export class formTest extends connect(store)(LitElement) {
                     <button link>LINK</button>
                     <button link action>LINK ACTION</button>
                     <button link disabled>LINK DISABLED</button>
+                </div>
+            </div>
+            <div class="grid fit10">
+                <div class="spinner-container">
+                    anillo
+                    <div class="spinner" anillo></div>
+                </div>
+                <div class="spinner-container">
+                    aro
+                    <div class="spinner" aro></div>
+                </div>
+                <div class="spinner-container">
+                    cometa
+                    <div class="spinner" cometa></div>
+                </div>
+                <div class="spinner-container">
+                    bloque
+                    <div class="spinner" bloque></div>
+                </div>
+                <div class="spinner-container">
+                    progress
+                    <div class="spinner" progress></div>
+                </div>
+                <div class="spinner-container">
+                    sonar
+                    <div class="spinner" sonar></div>
+                </div>
+                <div class="spinner-container">
+                    radar
+                    <div class="spinner" radar></div>
+                </div>
+                <div class="spinner-container">
+                    dado
+                    <div class="spinner" dado></div>
                 </div>
             </div>
         `;

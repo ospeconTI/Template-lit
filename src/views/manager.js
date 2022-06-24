@@ -5,14 +5,11 @@ import { connect } from "@brunomon/helpers";
 import { store } from "../redux/store";
 import { layoutsCSS } from "../views/ui/layouts";
 import { getLayout } from "../redux/screens/screenLayouts";
-
-import { SpinnerLoading } from "./componentes/spinner";
-
 import { goTo } from "../redux/routing/actions";
-
 import { formTest } from "./componentes/formTest";
 import { menuPrincipal } from "./headers/menu";
-
+import { spinner } from "./css/spinner";
+import { gridLayout } from "./css/gridLayout";
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SCREEN = "screen.timeStamp";
 const SELECTION = "ui.menu.timeStamp";
@@ -31,14 +28,16 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
 
     static get styles() {
         return css`
+            ${layoutsCSS}
+            ${gridLayout}
+            ${spinner}
+
             :host {
                 display: grid;
                 padding: 0;
                 background-color: var(--aplicacion);
                 overflow: hidden;
             }
-
-            ${layoutsCSS}
 
             :host::-webkit-scrollbar {
                 width: 0.5vw;
@@ -56,6 +55,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
 
     render() {
         return html`
+            <div class="spinner" anillo fixed hidden></div>
             <menu-principal area="header"></menu-principal>
             <form-test area="body"></form-test>
         `;
