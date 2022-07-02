@@ -24,4 +24,18 @@ html {
     --font-error-family: inherit;
     --font-error-size: 0.8rem;
     --font-error-weight: normal;
+
+    --font-h1: 6rem;
+    --font-h2: 4.25rem;
+    --font-h3: 3rem;
+    --font-h4: 2.125rem;
+    --font-h5: 1.5rem;
+    --font-h6: 1.25rem;
+    --font-subtitulo-1: 1rem;
+    --font-subtitulo-2: 0.875rem;
+    --font-cuerpo-1: 1rem;
+    --font-cuerpo-2: 0.875rem;
+    --font-boton: 0.875rem;
+    --font-caption: 0.75rem;
+    --font-overline: 1.125rem;
 }
