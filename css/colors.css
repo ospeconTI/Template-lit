@@ -28,5 +28,5 @@ html {
     --on-formulario-disabled: rgba(0, 0, 0, 0.38);
     --on-formulario-separador: rgba(0, 0, 0, 0.12);
     --on-formulario-bajada: rgba(0, 0, 0, 0.6);
-    --velo: rgba(0, 0, 0, 0.32);
+    --modal-backdrop: rgba(0, 0, 0, 0.32);
 }

@@ -29,4 +29,10 @@ html {
     --shadow-elevation-24-z: 2400;
 
     --control-radius: 0.2rem;
+    --nivel-1: 100;
+    --nivel-2: 200;
+    --nivel-3: 300;
+    --nivel-4: 400;
+    --nivel-5: 500;
+    --nivel-maximo: 600;
 }
