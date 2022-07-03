@@ -46,6 +46,7 @@ export const check = css`
         cursor: pointer;
         grid-area: etiqueta;
         align-self: center;
+        color:var(--on-formulario )
     }
     .check  label:last-child {
         display: grid;
