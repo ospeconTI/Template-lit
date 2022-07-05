@@ -1,6 +1,6 @@
 {
     "name": "@brunomon/template-lit",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "description": "Template-lit",
     "main": "./src/index.js",
     "scripts": {

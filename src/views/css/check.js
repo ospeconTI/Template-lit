@@ -13,10 +13,12 @@ export const check = css`
         padding: 0.5rem;
         font-size: var(--font-bajada-size);
     }
-    .check[disabled]{
-        border-color: var(--on-formulario-disabled);        
+    .check[disabled] {
+        border-color: var(--on-formulario-disabled);
     }
-    .check[disabled] * {cursor: not-allowed !important}
+    .check[disabled] * {
+        cursor: not-allowed !important;
+    }
 
     .check[disabled] label {
         color: var(--on-formulario-disabled);
@@ -25,14 +27,14 @@ export const check = css`
     .check[disabled] label:last-child {
         border-color: var(--on-formulario-disabled);
     }
-    .check input[type="checkbox"]:focus + label{
-        color:var(--primario)
+    .check input[type="checkbox"]:focus + label {
+        color: var(--primario);
     }
-    .check:focus-within{
-        background-color:var(--aplicacion);
-        border-color:var(--primario)
+    .check:focus-within {
+        background-color: var(--aplicacion);
+        border-color: var(--primario);
     }
-    
+
     .check input[type="checkbox"] {
         min-width: 0.8rem;
         min-height: 0.8rem;
@@ -46,9 +48,9 @@ export const check = css`
         cursor: pointer;
         grid-area: etiqueta;
         align-self: center;
-        color:var(--on-formulario )
+        color: var(--on-formulario);
     }
-    .check  label:last-child {
+    .check label:last-child {
         display: grid;
         box-sizing: border-box;
         content: "";
@@ -60,14 +62,13 @@ export const check = css`
         grid-area: chequeo;
         place-self: center;
     }
-    .check input:checked +  label + label {
+    .check input:checked + label + label {
         border: 0.4rem solid var(--primario);
     }
     .check[action] label:last-child {
         border: 0.1rem solid var(--secundario);
     }
-    .check[action] input:checked +  label+ label {
+    .check[action] input:checked + label + label {
         border: 0.4rem solid var(--secundario);
     }
-    .
 `;
