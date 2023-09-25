@@ -3,6 +3,9 @@
 import { css } from "lit";
 
 export const gridLayout = css`
+    .layout {
+        display: grid;
+    }
     .no-padding {
         padding: 0 !important;
     }
